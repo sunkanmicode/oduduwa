@@ -83,3 +83,13 @@ nav{
 .left-col img:hover{
     filter: grayscale(2);
 }
+.right-col h1{
+    font-size: 55px;
+    font-weight: 600;
+    color: #777;
+
+}
+.right-col p{
+    color: #777;
+    margin: 20px 0 70px;
+}
