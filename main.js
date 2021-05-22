@@ -3,6 +3,19 @@ let URL_API = 'https://type.fit/api/quotes';
 const paraQuote = document.querySelector('.para-quote');
 const title = document.querySelector('.title');
 
+//Oduduwa Anthem
+const anthemBtn = document.querySelector('.btn-anthem');
+const anthem = document.querySelector('.anthem');
+
+anthemBtn.addEventListener('click', ()=>{
+    if(anthem.paused){
+        anthem.play();
+    }else{
+        anthem.pause();
+    }
+})
+
+
 const quoteBtn = document.querySelector('.btn-quotes');
 window.addEventListener("DOMContentLoaded", ()=>{
     setInterval(()=>{
