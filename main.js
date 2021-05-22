@@ -1,38 +1,27 @@
 // // https://type.fit/api/quotes
-const URL_API = 'https://type.fit/api/quotes';
+let URL_API = 'https://type.fit/api/quotes';
+const paraQuote = document.querySelector('.para-quote');
+const title = document.querySelector('.title');
 
-// const para = document.querySelector('.para')
-// const title = document.querySelector('.title');
 
-// const prevBtn = document.querySelector(".prev-btn");
-// const nextBtn = document.querySelector(".next-btn")
-// const randonBtn = document.querySelector(".randon-btn")
+        const quoteBtn = document.querySelector('.btn-quotes');
+         window.addEventListener("DOMContentLoaded", ()=>{
+             setInterval(()=>{
+                const fetchData = async() =>{
+                
+                    let randomNumber = Math.floor(Math.random() * 1643);
+                    console.log(randomNumber);
+                            const res = await fetch(URL_API);
+                            const data = await res.json();
+                            console.log(data[randomNumber]);
+                            showHistory(data[randomNumber])
+                }
+                fetchData();
 
-// let currentItem = 1;
+             }, 5000)
+           
+         })
 
-// const paraQuote = document.querySelector('.para-quote');
-// const author = document.querySelector('.author')
-// window.addEventListener("DOMContentLoaded",  ()=>{
-//     fetchData()  
-// });
-
-//     const fetchData = async() =>{
-//             const res = await fetch(URL_API);
-//             const data = await res.json();
-//         showQuotes(data)
-//         setInterval(showQuotes(data), 1000)
-        
-
-//     }
-
-// const showQuotes = (people)=>{
-//         const item;
-//        paraQuote.textContent = item.text
-// };
-
-// fetchData()
-
-// setInterval(fetchData([currentItem]), 2000)
 
 const history = [
     {
@@ -100,20 +89,31 @@ hisBtn.addEventListener('click', ()=>{
 
 // });
 
-const showHistory = ()=>{
+const showHistory = (data)=>{
     const historyItem = history[currentValue];
     heading.innerHTML = historyItem.title;
-    para.innerHTML = historyItem.desc
+    para.innerHTML = historyItem.desc;
+
+        // show quotes
+        // const item = data[currentValue]
+       paraQuote.textContent = data.text;
+       title.innerHTML = data.author
+
 
     // const mapItem = map[currentValue];
     // mapImg.src = mapItem.img;
-    // // para.innerHTML = mapItem.desc
+    // para.innerHTML = mapItem.desc
 
 }
+
+
+
      nextBtn.addEventListener('click', ()=>{
         currentValue++
         if(currentValue > history.length -1){
-            quote.classList.remove("open-quote")
+            currentValue = 0;
+            quote.classList.remove("open-quote");
+
             
         }
         showHistory()
