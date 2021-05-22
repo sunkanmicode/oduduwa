@@ -3,25 +3,20 @@ let URL_API = 'https://type.fit/api/quotes';
 const paraQuote = document.querySelector('.para-quote');
 const title = document.querySelector('.title');
 
-
-        const quoteBtn = document.querySelector('.btn-quotes');
-         window.addEventListener("DOMContentLoaded", ()=>{
-             setInterval(()=>{
-                const fetchData = async() =>{
-                
-                    let randomNumber = Math.floor(Math.random() * 1643);
-                    console.log(randomNumber);
-                            const res = await fetch(URL_API);
-                            const data = await res.json();
-                            console.log(data[randomNumber]);
-                            showHistory(data[randomNumber])
-                }
-                fetchData();
-
-             }, 5000)
-           
-         })
-
+const quoteBtn = document.querySelector('.btn-quotes');
+window.addEventListener("DOMContentLoaded", ()=>{
+    setInterval(()=>{
+       const fetchData = async() =>{
+           let randomNumber = Math.floor(Math.random() * 1643);
+           console.log(randomNumber);
+                   const res = await fetch(URL_API);
+                   const data = await res.json();
+                //    console.log(data[randomNumber]);
+                   showHistory(data[randomNumber])
+       }
+       fetchData();
+    }, 5000)
+});
 
 const history = [
     {
@@ -71,8 +66,8 @@ const heading = document.querySelector('.heading');
 const para = document.querySelector('.para')
 
 //show Map
-const mapBtn = document.querySelector('.btn-map');
-const mapImg = document.querySelector('.map-img')
+// const mapBtn = document.querySelector('.btn-map');
+// const mapImg = document.querySelector('.map-img')
 
 const prevBtn = document.querySelector(".prev-btn");
 const nextBtn = document.querySelector(".next-btn")
@@ -95,30 +90,21 @@ const showHistory = (data)=>{
     para.innerHTML = historyItem.desc;
 
         // show quotes
-        // const item = data[currentValue]
        paraQuote.textContent = data.text;
        title.innerHTML = data.author
-
-
-    // const mapItem = map[currentValue];
-    // mapImg.src = mapItem.img;
-    // para.innerHTML = mapItem.desc
-
 }
 
 
-
+    //next buttton
      nextBtn.addEventListener('click', ()=>{
         currentValue++
         if(currentValue > history.length -1){
             currentValue = 0;
-            quote.classList.remove("open-quote");
-
-            
+            quote.classList.remove("open-quote"); 
         }
         showHistory()
-
     });
+    //prev buttons
     prevBtn.addEventListener('click', ()=>{
         currentValue--
         if(currentValue < 0){
