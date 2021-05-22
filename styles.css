@@ -3,18 +3,31 @@
     padding: 0;
     font-family: 'poppins', sans-serif;
 }
-.header{
-    min-height: 100vh;
-    width: 100%;
-    background-color: lightseagreen;
-    color: #fff;
-    position: relative;
-}
-nav{
+body {
+    background:  linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(img/flag.jpg);
+    background-size: contain;
+    background-position: center;
+    height: 100vh;
+  }
+
+.logo-btn{
     display: flex;
     justify-content: space-around;
     align-items: center;
     position: relative;
+} 
+.nav-btn{
+    text-align: center;
+    padding: 10px;
+    padding: 0;
+    margin: 0;
+  
+}
+.nav-btn button{
+    padding: 10px;
+    margin: 5px;
+    border-radius: 7px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .logo{
     text-decoration: none;
@@ -32,47 +45,34 @@ nav{
     -moz-text-fil-color: transparent;
 }
 
-.nav-links{
-    text-align: right;
-    background: lightblue;
-    padding: 10px 30px;
-    border-bottom-left-radius: 18px;
-    border-bottom-right-radius: 18px;
 
-}
-.nav-links ul li{
-    list-style: none;
-    display: inline-block;
-    padding: 10px 25px;
-}
-.nav-links ul li a{
-    color:#333;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bolds;
-}
-.left-sidebar{
+
+/* .left-sidebar{
     width: 20%;
     height: 100%;
     position: absolute;
     left: 0;
     top: 0;
     background: lightblue;
-}
+} */
 .row{
     padding: 0 10%;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     position: relative;
-    margin-top: 5%;
+    /* margin-top: 5%; */
 }
 .left-col{
     flex-basis: 40%;
 }
 .right-col{
     flex-basis: 55%;
+    /* visibility: hidden; */
+
 }
+
+
 .left-col img{
     width: 80%;
     cursor: pointer;
@@ -91,6 +91,10 @@ nav{
     border-radius: 10px;
     box-shadow: 5px 0 4px 0 rgba(0,0,0,0.25);
     position: relative;
+    visibility: hidden;
+}
+.open-quote {
+    visibility: visible;
 }
 .card{
     height: 300px;
@@ -106,16 +110,19 @@ nav{
     align-items: center;
     margin-bottom: 40px;
 }
-.profile img{
-    width: 70px;
-    border-radius: 50%;
-    margin-right: 20px;
+.profile h2{
+    cursor: pointer;
 }
-.profile h3{
+.right-quote{
+    text-align: end;
+    color: #fff;
+    padding: 5px;
+}
+/* .profile h3{
     font-size: 26px;
     color: #f44336;
     margin-bottom: 8px;
-}
+} */
 #slide{
     width: 100%;
     padding-right: 60px;
