@@ -1,7 +1,5 @@
-// // https://type.fit/api/quotes
-let URL_API = 'https://type.fit/api/quotes';
-const paraQuote = document.querySelector('.para-quote');
-const title = document.querySelector('.title');
+
+
 
 //Oduduwa Anthem
 const anthemBtn = document.querySelector('.btn-anthem');
@@ -16,7 +14,14 @@ anthemBtn.addEventListener('click', ()=>{
 })
 
 
-const quoteBtn = document.querySelector('.btn-quotes');
+
+
+
+//showing quotes
+let URL_API = 'https://type.fit/api/quotes';
+const paraQuote = document.querySelector('.para-quote');
+const title = document.querySelector('.title');
+
 window.addEventListener("DOMContentLoaded", ()=>{
     setInterval(()=>{
        const fetchData = async() =>{
@@ -72,30 +77,40 @@ const map =[
     {
         img:'https://www.google.com/url?sa=i&url=https%3A%2F%2Ffacesinternationalmagazine.org.ng%2F%3Fp%3D181053&psig=AOvVaw2CtQanVYx2Hh1eGLbXapW0&ust=1621971520724000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKj1_KXy2_ACFQAAAAAdAAAAABAS'
     }
-]
-const quote = document.querySelector('.quote');
-const hisBtn = document.querySelector('.btn-hist');
+];
+
+
 const heading = document.querySelector('.heading');
-const para = document.querySelector('.para')
+const para = document.querySelector('.para');
 
-//show Map
-// const mapBtn = document.querySelector('.btn-map');
-// const mapImg = document.querySelector('.map-img')
-
+//next and prev btn
 const prevBtn = document.querySelector(".prev-btn");
-const nextBtn = document.querySelector(".next-btn")
+const nextBtn = document.querySelector(".next-btn");
+
+const displayCol = document.querySelector('.right-col');
+const btns = document.querySelectorAll('.btn');
+const showCard = document.querySelectorAll('.card');
+
+displayCol.addEventListener('click', (e)=>{
+    const id = e.target.dataset.id;
+    if(id){
+        btns.forEach((btn)=>{
+            btn.classList.remove("active");
+            e.target.classList.add("active")
+        });
+        showCard.forEach((card)=>{
+            card.classList.remove('active');
+        });
+        const ele = document.getElementById(id);
+        ele.classList.add('active')
+    }
+})
+
+
 
 let currentValue = 0;
-hisBtn.addEventListener('click', ()=>{
-    quote.classList.toggle("open-quote")
-    showHistory()
 
-});
-// mapBtn.addEventListener('click', ()=>{
-//     quote.classList.toggle("open-quote")
-//     showHistory()
 
-// });
 
 const showHistory = (data)=>{
     const historyItem = history[currentValue];
@@ -104,16 +119,16 @@ const showHistory = (data)=>{
 
         // show quotes
        paraQuote.textContent = data.text;
-       title.innerHTML = data.author
+       title.innerHTML = data.author;  
 }
+// showHistory();
 
 
     //next buttton
      nextBtn.addEventListener('click', ()=>{
         currentValue++
         if(currentValue > history.length -1){
-            currentValue = 0;
-            quote.classList.remove("open-quote"); 
+            currentValue = 0; 
         }
         showHistory()
     });
@@ -121,9 +136,11 @@ const showHistory = (data)=>{
     prevBtn.addEventListener('click', ()=>{
         currentValue--
         if(currentValue < 0){
-            currentValue = 0;
+            currentValue = history.length -1;
         }
         showHistory()
 
     });
+showHistory();
+
    
