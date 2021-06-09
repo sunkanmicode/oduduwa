@@ -52,6 +52,7 @@ body {
 .right-quote{
     text-align: right;
     color: #fff;
+    width: 400px;
     margin-right: 10px;
 }
 .row{
